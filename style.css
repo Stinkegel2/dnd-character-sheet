@@ -1,0 +1,567 @@
+:root {
+            --paper: #f1dfb6;
+            --light: #fff2d3;
+            --ink: #382315;
+            --brown: #704321;
+            --gold: #a77a35;
+            --line: #b99a65;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 22px 12px;
+            color: var(--ink);
+            font-family: Georgia, "Times New Roman", serif;
+            background: radial-gradient(ellipse at center, #59402c, #24170f);
+        }
+
+        .scroll {
+            max-width: 1300px;
+            margin: auto;
+            padding: 30px;
+            background:
+                radial-gradient(ellipse at 10% 15%, #fff3d1, transparent 40%),
+                radial-gradient(ellipse at 90% 80%, #d4b57b, transparent 45%),
+                linear-gradient(100deg, #e1c894, var(--light), #e5cc99);
+            border: 10px double var(--brown);
+            border-radius: 12px;
+            box-shadow: 0 12px 35px #0009;
+        }
+
+        .ornament {
+            text-align: center;
+            color: var(--gold);
+            font-size: 23px;
+            letter-spacing: 8px;
+            margin: 8px;
+        }
+
+        h1 {
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: clamp(25px, 4vw, 42px);
+            margin: 5px 0;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-style: italic;
+            margin-bottom: 25px;
+        }
+
+        h2 {
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 2px solid var(--brown);
+            padding-bottom: 5px;
+            margin: 24px 0 12px;
+        }
+
+        h3 {
+            font-size: 15px;
+            margin: 7px 0 10px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+        }
+
+        .grid3 {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 10px;
+        }
+
+        .identity {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 12px;
+        }
+
+        .panel {
+            min-width: 0;
+            border: 1px solid var(--line);
+            background: #fff5d4a0;
+            padding: 12px;
+            border-radius: 5px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+            margin-bottom: 4px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            min-width: 0;
+            padding: 8px;
+            color: var(--ink);
+            background: #fff8e5;
+            border: 1px solid #c4a879;
+            border-radius: 3px;
+            font: 14px Georgia, serif;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: 2px solid var(--gold);
+            background: white;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 85px;
+        }
+
+        input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: var(--brown);
+            vertical-align: middle;
+        }
+
+        .checkline {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            margin: 7px 0;
+        }
+
+        .checkline input {
+            flex-shrink: 0;
+        }
+
+        .checkline label {
+            text-transform: none;
+            letter-spacing: 0;
+            font-weight: normal;
+            font-size: 13px;
+            margin: 0;
+        }
+
+        .hint {
+            font-size: 12px;
+            font-style: italic;
+            margin: 5px 0 9px;
+        }
+
+        .statgrid {
+            display: grid;
+            grid-template-columns: repeat(6, minmax(0, 1fr));
+            gap: 9px;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 12px 5px;
+            border: 2px solid var(--brown);
+            border-radius: 35px 35px 8px 8px;
+            background: #ead2a0;
+        }
+
+        .stat label {
+            min-height: 28px;
+            font-size: 11px;
+        }
+
+        .stat select {
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .modifier {
+            font-size: 22px;
+            font-weight: bold;
+            margin-top: 8px;
+        }
+
+        .stat small {
+            display: block;
+            font-size: 10px;
+            margin-top: 4px;
+        }
+
+        .combat {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 10px;
+        }
+
+        .combatbox {
+            text-align: center;
+            border: 2px solid var(--brown);
+            border-radius: 5px;
+            padding: 10px;
+            background: #f6e6bf;
+            min-width: 0;
+        }
+
+        .combatbox label {
+            min-height: 28px;
+        }
+
+        .combatbox input {
+            text-align: center;
+            font-size: 19px;
+            font-weight: bold;
+        }
+
+        .combatbox .result {
+            font-size: 25px;
+            font-weight: bold;
+            margin: 8px 0;
+        }
+
+        .combatbox .override-label {
+            font-size: 10px;
+            min-height: 0;
+            margin-top: 8px;
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: 20px minmax(0, 1fr) 70px;
+            align-items: center;
+            gap: 7px;
+            padding: 5px 0;
+            border-bottom: 1px dotted var(--line);
+        }
+
+        .row label {
+            margin: 0;
+            text-transform: none;
+            letter-spacing: 0;
+            font-weight: normal;
+            font-size: 13px;
+        }
+
+        .row input[type="number"] {
+            padding: 5px 3px;
+            text-align: center;
+        }
+
+        .row .calculated {
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+            padding: 5px 2px;
+            background: #f0dfb8;
+            border-radius: 3px;
+        }
+
+        .tablehead {
+            display: grid;
+            grid-template-columns: 20px minmax(0, 1fr) 70px;
+            gap: 7px;
+            font-size: 10px;
+            font-weight: bold;
+            padding-bottom: 5px;
+        }
+
+        .buttonrow {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 9px;
+            margin: 18px 0;
+        }
+
+        button {
+            cursor: pointer;
+            background: #56351e;
+            color: #ffedc9;
+            border: 2px solid #c5a366;
+            border-radius: 5px;
+            padding: 10px 15px;
+            font: bold 13px Georgia, serif;
+        }
+
+        button:hover {
+            background: #82552c;
+        }
+
+        button.secondary {
+            background: #8b6a3d;
+        }
+
+        button.danger {
+            background: #7a2d22;
+        }
+
+        button.smallbtn {
+            padding: 6px 10px;
+            margin-top: 7px;
+        }
+
+        .attackgrid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 2fr;
+            gap: 8px;
+        }
+
+        .attack,
+        .spell {
+            border: 1px solid var(--line);
+            background: #fff5d4a0;
+            border-radius: 5px;
+            padding: 12px;
+            margin-bottom: 10px;
+            min-width: 0;
+        }
+
+        .spellgrid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 9px;
+        }
+
+        .spellhead {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .spellhead h3 {
+            margin: 0;
+        }
+
+        .spellnotes {
+            margin-top: 9px;
+        }
+
+        .spellflags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin: 10px 0;
+        }
+
+        .spellflags label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            text-transform: none;
+            font-weight: normal;
+            font-size: 12px;
+            letter-spacing: 0;
+            margin: 0;
+        }
+
+        .spellflags input {
+            width: 15px;
+        }
+
+        .slotgrid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 10px;
+        }
+
+        .slot {
+            border: 2px solid var(--brown);
+            background: #f6e6bf;
+            padding: 12px;
+            border-radius: 6px;
+            text-align: center;
+            min-width: 0;
+        }
+
+        .slot-title {
+            font-size: 15px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .slotpair {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            text-align: left;
+        }
+
+        .slotpair input {
+            text-align: center;
+        }
+
+        .slot-counter {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .slot-counter button {
+            width: 42px;
+            height: 42px;
+            padding: 0;
+            font-size: 22px;
+            font-weight: bold;
+            touch-action: manipulation;
+        }
+
+        .slot-remaining {
+            min-width: 48px;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .slot-remaining small {
+            display: block;
+            font-size: 10px;
+            font-weight: normal;
+            text-transform: uppercase;
+        }
+
+        .slot-status {
+            font-size: 11px;
+            margin-top: 6px;
+        }
+
+        .deathrow {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 10px;
+            align-items: center;
+            margin: 8px 0;
+        }
+
+        .deathchecks {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .deathchecks label {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin: 0;
+            text-transform: none;
+            font-weight: normal;
+        }
+
+        .deathchecks input {
+            width: 16px;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            font-style: italic;
+            margin-top: 20px;
+        }
+
+        @media(max-width:800px) {
+            .scroll {
+                padding: 16px;
+            }
+
+            .identity {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .statgrid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+
+            .combat {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .grid3,
+            .spellgrid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .attackgrid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media(max-width:480px) {
+
+            .grid,
+            .grid3,
+            .spellgrid {
+                grid-template-columns: 1fr;
+            }
+
+            .deathrow {
+                grid-template-columns: 1fr;
+            }
+
+            .scroll {
+                padding: 10px;
+                border-width: 5px;
+            }
+
+            h1 {
+                letter-spacing: 1px;
+            }
+        }
+
+        @media print {
+            @page {
+                size: A4;
+                margin: 8mm;
+            }
+
+            body {
+                padding: 0;
+                background: white;
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+
+            .scroll {
+                max-width: none;
+                padding: 12px;
+                border-width: 5px;
+                box-shadow: none;
+            }
+
+            .buttonrow,
+            .no-print {
+                display: none !important;
+            }
+
+            input,
+            select,
+            textarea {
+                background: transparent;
+                color: #24170f;
+            }
+
+            .panel,
+            .stat,
+            .combatbox,
+            .attack,
+            .spell,
+            .slot {
+                break-inside: avoid;
+            }
+
+            h2,
+            h3 {
+                break-after: avoid;
+            }
+        }
