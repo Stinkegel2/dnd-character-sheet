@@ -13,22 +13,20 @@
         <div class="ornament">❧ ✦ ❧</div>
         <h1>Adventurer's Scroll</h1>
 
+
 <div class="subtitle">A Chronicle of Heroes, Legends &amp; Destinies</div>
 
-<!-- USER ACCOUNT -->
 <section class="account-panel">
     <h2>Adventurer Account</h2>
 
     <div id="authLoggedOut">
-        <p class="hint">Create an account or log in to access your characters online.</p>
+        <p>Create an account or log in to access your characters online.</p>
 
         <label for="authEmail">Email Address</label>
-        <input id="authEmail" type="email" placeholder="you@example.com"
-            autocomplete="email">
+        <input id="authEmail" type="email" placeholder="you@example.com">
 
         <label for="authPassword">Password</label>
-        <input id="authPassword" type="password" placeholder="At least 6 characters"
-            autocomplete="current-password">
+        <input id="authPassword" type="password" placeholder="At least 6 characters">
 
         <div class="buttonrow">
             <button type="button" onclick="signUp()">Create Account</button>
@@ -39,13 +37,10 @@
     <div id="authLoggedIn" hidden>
         <p>You are logged in as:</p>
         <strong id="authUserEmail"></strong>
-
-        <div class="buttonrow">
-            <button type="button" class="danger" onclick="signOut()">Log Out</button>
-        </div>
+        <button type="button" class="danger" onclick="signOut()">Log Out</button>
     </div>
 
-    <p id="authStatus" class="hint" role="status" aria-live="polite">
+    <p id="authStatus" class="hint" role="status">
         Connecting to account services...
     </p>
 </section>
