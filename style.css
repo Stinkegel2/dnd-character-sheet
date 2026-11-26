@@ -565,3 +565,40 @@
                 break-after: avoid;
             }
         }
+
+
+/* USER ACCOUNT PANEL */
+
+.account-panel {
+    max-width: 650px;
+    margin: 20px auto 30px;
+    padding: 18px;
+    border: 2px solid var(--brown);
+    border-radius: 8px;
+    background: #fff5d4;
+    box-shadow: 0 3px 10px #0002;
+}
+
+.account-panel h2 {
+    margin-top: 0;
+    text-align: center;
+}
+
+.account-panel label {
+    margin-top: 12px;
+}
+
+.account-panel .buttonrow {
+    margin-bottom: 5px;
+}
+
+#authStatus {
+    text-align: center;
+    min-height: 18px;
+    margin-bottom: 0;
+}
+
+[hidden] {
+    display: none !important;
+}
+

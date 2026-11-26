@@ -670,3 +670,140 @@ characterForm.addEventListener('change', scheduleAutosave);
 characterForm.addEventListener('click', event => {
     if (event.target.closest('button')) scheduleAutosave();
 });
+
+// ==========================================
+// SUPABASE CONNECTION AND USER AUTHENTICATION
+// ==========================================
+
+// 1. Add your own Supabase project details here.
+const SUPABASE_URL = 'https://mrbeltbsdiwmfbqpgyoc.supabase.co';
+const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_E5whAbNzIwU8sEw5LgZT9g_AkLGUnlM';
+
+// 2. Create the Supabase connection.
+let supabaseClient = null;
+
+if (
+    window.supabase &&
+    SUPABASE_URL !== 'PASTE_YOUR_PROJECT_URL_HERE' &&
+    SUPABASE_PUBLISHABLE_KEY !== 'PASTE_YOUR_PUBLISHABLE_KEY_HERE'
+) {
+    supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+}
+
+// 3. Update the account panel when the login state changes.
+function updateAuthUI(session) {
+    const loggedOut = document.getElementById('authLoggedOut');
+    const loggedIn = document.getElementById('authLoggedIn');
+    const emailDisplay = document.getElementById('authUserEmail');
+
+    if (session && session.user) {
+        loggedOut.hidden = true;
+        loggedIn.hidden = false;
+        emailDisplay.textContent = session.user.email;
+        setAuthStatus('You are successfully logged in.');
+    } else {
+        loggedOut.hidden = false;
+        loggedIn.hidden = true;
+        emailDisplay.textContent = '';
+        setAuthStatus('You are not logged in.');
+    }
+}
+
+// 4. Display messages in the account panel.
+function setAuthStatus(message) {
+    document.getElementById('authStatus').textContent = message;
+}
+
+// 5. Create a new account.
+async function signUp() {
+    if (!supabaseClient) {
+        setAuthStatus('Please enter your Supabase URL and publishable key in script.js.');
+        return;
+    }
+
+    const email = document.getElementById('authEmail').value.trim();
+    const password = document.getElementById('authPassword').value;
+
+    if (!email || !password) {
+        setAuthStatus('Please enter both an email address and password.');
+        return;
+    }
+
+    if (password.length < 6) {
+        setAuthStatus('Your password must contain at least 6 characters.');
+        return;
+    }
+
+    setAuthStatus('Creating your account...');
+
+    const {data, error} = await supabaseClient.auth.signUp({
+        email: email,
+        password: password,
+    });
+
+    if (error) {
+        setAuthStatus('Registration failed: ' + error.message);
+        return;
+    }
+
+    if (data.session) {
+        setAuthStatus('Account created successfully!');
+    } else {
+        setAuthStatus('Account created! Please check your email to confirm your address.');
+    }
+}
+
+// 6. Log in to an existing account.
+async function signIn() {
+    if (!supabaseClient) {
+        setAuthStatus('Please enter your Supabase URL and publishable key in script.js.');
+        return;
+    }
+
+    const email = document.getElementById('authEmail').value.trim();
+    const password = document.getElementById('authPassword').value;
+
+    if (!email || !password) {
+        setAuthStatus('Please enter both an email address and password.');
+        return;
+    }
+
+    setAuthStatus('Logging in...');
+
+    const {error} = await supabaseClient.auth.signInWithPassword({
+        email: email,
+        password: password,
+    });
+
+    if (error) {
+        setAuthStatus('Login failed: ' + error.message);
+        return;
+    }
+
+    setAuthStatus('Login successful!');
+}
+
+// 7. Log out of the current account.
+async function signOut() {
+    if (!supabaseClient) return;
+
+    setAuthStatus('Logging out...');
+
+    const {error} = await supabaseClient.auth.signOut();
+
+    if (error) {
+        setAuthStatus('Logout failed: ' + error.message);
+        return;
+    }
+
+    setAuthStatus('You have logged out.');
+}
+
+// 8. Listen for login, logout, and session changes.
+if (supabaseClient) {
+    supabaseClient.auth.onAuthStateChange((event, session) => {
+        updateAuthUI(session);
+    });
+} else {
+    setAuthStatus('Supabase is not configured yet. Check your project details.');
+}

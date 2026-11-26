@@ -12,9 +12,46 @@
     <div class="scroll">
         <div class="ornament">❧ ✦ ❧</div>
         <h1>Adventurer's Scroll</h1>
-        <div class="subtitle">A Chronicle of Heroes, Legends &amp; Destinies</div>
 
-        <form id="characterForm" autocomplete="off">
+<div class="subtitle">A Chronicle of Heroes, Legends &amp; Destinies</div>
+
+<!-- USER ACCOUNT -->
+<section class="account-panel">
+    <h2>Adventurer Account</h2>
+
+    <div id="authLoggedOut">
+        <p class="hint">Create an account or log in to access your characters online.</p>
+
+        <label for="authEmail">Email Address</label>
+        <input id="authEmail" type="email" placeholder="you@example.com"
+            autocomplete="email">
+
+        <label for="authPassword">Password</label>
+        <input id="authPassword" type="password" placeholder="At least 6 characters"
+            autocomplete="current-password">
+
+        <div class="buttonrow">
+            <button type="button" onclick="signUp()">Create Account</button>
+            <button type="button" class="secondary" onclick="signIn()">Log In</button>
+        </div>
+    </div>
+
+    <div id="authLoggedIn" hidden>
+        <p>You are logged in as:</p>
+        <strong id="authUserEmail"></strong>
+
+        <div class="buttonrow">
+            <button type="button" class="danger" onclick="signOut()">Log Out</button>
+        </div>
+    </div>
+
+    <p id="authStatus" class="hint" role="status" aria-live="polite">
+        Connecting to account services...
+    </p>
+</section>
+
+<form id="characterForm" autocomplete="off">
+
 
             <h2>I. Character Identity</h2>
             <div class="identity">
@@ -239,7 +276,8 @@
         </form>
         <div class="ornament">❧ ✦ ❧</div>
     </div>
-    <script src="script.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="script.js"></script>
 </body>
 
 </html>
